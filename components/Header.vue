@@ -2,16 +2,16 @@
     <div class="page_wrap">
   <header>
     <div class="nav_bar">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tmdb.new.logo.svg/1280px-Tmdb.new.logo.svg.png" alt="">
-			<nav id="left_nav">
+      <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="">
+			<div id="left_nav">
 				<ul>
 					<li><a href="#">영화</a></li>
 					<li><a href="">TV프로그램</a></li>
 					<li><a href="">인물</a></li>
 					<li><a href="">More</a></li>
 				</ul>
-			</nav>
-      <nav id="right_nav">
+			</div>
+      <div id="right_nav">
 				<ul>
 					<li><a href="#">+</a></li>
 					<li><a href="">KO</a></li>
@@ -19,18 +19,15 @@
 					<li><a href="">프로필</a></li>
           <li><a href="">검색</a></li>
 				</ul>
-			</nav>
+			</div>
     </div>
   </header>
-
-  <div class="content">
-  </div>
 </div>
 </template>
 
 <style>
   header{
-    background-color: #032541;
+    background-color: #0d253f;
     width: 100%;
     height: 64px;
   }
@@ -47,8 +44,8 @@
   .nav_bar{
     width: 1300px;
     height: 40px;
-    position: relative;
-    /* margin: 0 auto; */
+    margin: 0 auto;
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,13 +53,12 @@
 
   .nav_bar > img {
     /* margin-left: 20px 20px 20px 20px; */
-    height: 40px;
+    height: 20px;
   }
-
 
   .nav_bar ul {
     margin: 0;
-    width:100%;
+    width: 100%;
     height: 100%;
     display: flex;
   }
@@ -72,20 +68,22 @@
     height: 100%;
     display: flex;
     align-items: center;
+    text-align: left;
     margin: 0px 20px 0px 20px;
   }
 
   .nav_bar ul > li a {
+    text-decoration: none;
     color: aliceblue;
   }
 
   .nav_bar > #left_nav{
-    width: 300px;
+    position: relative;
+    right: 180px;
     height: 100%;
   }
 
   .nav_bar > #right_nav{
-    width: 400px;
     height: 100%;
   }
 </style>

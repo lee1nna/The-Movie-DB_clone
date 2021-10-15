@@ -1,78 +1,44 @@
 <template>
   <div>
     <Header/>
-    <h1>What's Popular</h1>
-    <div class="slider-box">
-      <div class="slider">
-        <ul v-for="(item,i) in popularTvPrograms" :key="i">
-          <li><a href="#"><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></a></li>
-          <li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li>
-          <li id="release-date">{{popularTvPrograms[i].first_air_date}}</li>
-        </ul>
+    <div class="main">
+      <img class="main-img" src="https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/rCxdJkk5PMCWIzRWcpqIxUaWnf1.jpg" alt="">
+      <div class="main-text">
+        <h1>Welcome.</h1>
+        <h2>Millions of movies, TV shows and people to discover. Explore now.</h2>
       </div>
     </div>
+    <PopularArea/>
+    <FreeToWatchArea/>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
-const popularTvPrograms = []
-
 export default {
-    asyncData({params, error}) {
-      return axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
-      .then((res)=>{
-        return {
-          popularTvPrograms: res.data.results
-      }
-      })
-      .catch((e)=>{
-        console.log(e)
-      })
-    },
+
   }
 </script>
+
 <style>
 
-  *{
-    margin: 0;
-    padding: 0;
+  .main{
+    position: relative;
+    text-align: center;
   }
 
-  .slider-box ul{
-    width: 150px;
-    display: inline-block;
-    list-style: none;
-    white-space: nowrap;
+  .main .main-text{
+    position: absolute;
+    color: aliceblue;
+    text-align: left;
+    margin:auto;
+    top: 90px;
+    left: 80px;
+    z-index: 1;
   }
 
-  a{
-    text-decoration:none;
-    color:inherit;
-  }
+  .main-img{
+    height: 100%;
+    max-width: 1300px;
 
-  .slider-box{
-    max-width:1300px;
-    height: 300px;
-    overflow: auto;
-    white-space: nowrap;
-    margin:0 auto;
   }
-
-  #poster{
-    width: 130px;
-    border-radius: 10px;
-  }
-
-  #popular-tv-name{
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  #release-date{
-    font-size: 14px;
-    font-weight: 500;
-  }
-
 </style>
