@@ -10,6 +10,7 @@
     </div>
     <PopularArea/>
     <FreeToWatchArea/>
+    <LatestTrailerArea/>
   </div>
 </template>
 
