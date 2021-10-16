@@ -79,7 +79,7 @@
 
   .nav_bar > #left_nav{
     position: relative;
-    right: 180px;
+    right: 150px;
     height: 100%;
   }
 
