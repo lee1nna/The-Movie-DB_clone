@@ -13,14 +13,14 @@
         <div class="slider" v-show="movieShow" >
             <ul v-for="(item,i) in popularMovie" :key="i">
             <nuxt-link :to="'/movie/'+popularMovieID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularMovie[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{popularMovie[i].title}}</a></li>
+            <nuxt-link :to="'/movie/'+popularMovieID[i]"><li id="popular-tv-name"><a href="#">{{popularMovie[i].title}}</a></li></nuxt-link>
             <li id="release-date">{{popularMovie[i].release_date}}</li>
             </ul>
         </div>
         <div class="slider" v-show="tvShow" >
             <ul v-for="(item,i) in popularTvPrograms" :key="i">
             <nuxt-link :to="'/tv/'+popularTvID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li>
+            <nuxt-link :to="'/tv/'+popularTvID[i]" ><li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li></nuxt-link>
             <li id="release-date">{{popularTvPrograms[i].first_air_date}}</li>
             </ul>
         </div>
@@ -140,7 +140,7 @@ export default {
     padding: 0;
   }
 
-  .slider li a{
+  .slider a{
     text-decoration: none;
     color: rgb(0, 0, 0);
   }

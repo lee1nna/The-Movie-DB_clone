@@ -13,14 +13,14 @@
         <div class="slider" v-show="FreeMovieShow" >
             <ul v-for="(item,i) in FreetoWatchMovie" :key="i">
             <nuxt-link :to="'/movie/'+FreetoWatchMovieID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+FreetoWatchMovie[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{FreetoWatchMovie[i].title}}</a></li>
+            <nuxt-link :to="'/movie/'+FreetoWatchMovieID[i]"><li id="popular-tv-name"><a href="#">{{FreetoWatchMovie[i].title}}</a></li></nuxt-link>
             <li id="release-date">{{FreetoWatchMovie[i].release_date}}</li>
             </ul>
         </div>
         <div class="slider" v-show="FreeTvShow" >
             <ul v-for="(item,i) in FreetoWatchTv" :key="i">
             <nuxt-link :to="'/tv/'+FreetoWatchTvID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+FreetoWatchTv[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{FreetoWatchTv[i].name}}</a></li>
+            <nuxt-link :to="'/tv/'+FreetoWatchTvID[i]" ><li id="popular-tv-name"><a href="#">{{FreetoWatchTv[i].name}}</a></li></nuxt-link>
             <li id="release-date">{{FreetoWatchTv[i].first_air_date}}</li>
             </ul>
         </div>
