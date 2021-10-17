@@ -6,7 +6,7 @@
         <div class="slider-box">
         <div class="slider">
             <ul v-for="(item,i) in popularTvPrograms" :key="i">
-            <li><a href="#"><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></a></li>
+            <nuxt-link :to="'/tv/'+popularTvID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></li></nuxt-link>
             <li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li>
             <li id="release-date">{{popularTvPrograms[i].first_air_date}}</li>
             </ul>
@@ -21,12 +21,19 @@ export default {
 
     data() {
       return {
-        popularTvPrograms: []
+        popularTvPrograms: [],
+        popularTvID : [],
       }
     },
     async fetch() {
       const { data } = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
       this.popularTvPrograms = data.results
+      this.popularTvPrograms.map((item)=>{
+        this.popularTvID.push(item.id)
+      })
+      
+
+    console.log(this.popularTvID)
     },
   }
 </script>
