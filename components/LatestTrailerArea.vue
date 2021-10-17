@@ -2,20 +2,12 @@
     <div>
       <div class="content-header">
           <h3>최신 예고편</h3>
-          <div id="category-selector">
-            <ul>
-              <li><a href="#">영화</a></li>
-              <li><a href="">TV프로그램</a></li>
-            </ul>
-          </div>
         </div>
         <div class="movie-slider-box">
             <div class="movie-slider">
                 <ul v-for="(item,i) in videoKey" :key="i">
                 <li>
-                    <video id="latest-poster" :poster="'https://image.tmdb.org/t/p/w200'+moviePosterPath[i]" alt="poster" autoplay loop controls>
-                    <iframe :src="'https://www.youtube.com/embed/'+videoKey[i]+'?autoplay=1'" frameborder="0" allowfullscreen wmode="Opaque"></iframe>
-                    </video>
+                  <img @click="playVideo(videoKey[i])" id="latest-poster" :src="'https://image.tmdb.org/t/p/w200'+moviePosterPath[i]" alt="poster">
                 </li>
                 <li id="latest-movie-name"><a href="#">{{popularTvPrograms[i].original_title}}</a></li>
                 </ul>
@@ -67,11 +59,13 @@ export default {
           this.videoKey.push(item.data.results[0].key)
       })
         console.log(this.videoKey)
+        console.log(this.moviePosterPath)
     },
 
     methods: {
-        playVideo(){
-            
+        playVideo(key){
+            const url = `https://www.youtube.com/embed/${key}?autoplay=1`
+            window.open(url,"","scrollbars")
         }
     }
     
@@ -99,6 +93,10 @@ export default {
   .movie-slider li a{
     text-decoration: none;
     color: rgb(0, 0, 0);
+  }
+
+  .movie-slider li img{
+    cursor: pointer;
   }
 
   #latest-poster{

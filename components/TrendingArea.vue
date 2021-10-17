@@ -1,29 +1,29 @@
 <template>
     <div>
       <div class="content-header">
-          <h3>What's Popular</h3>
+          <h3>Trending</h3>
           <div id="category-selector">
             <ul>
-              <li @click="clickMovie">영화</li>
-              <li @click="clickTv">TV프로그램</li>
+              <li @click="clickToday">오늘</li>
+              <li @click="clickWeek">이번주</li>
             </ul>
           </div>
         </div>
         <div class="slider-box">
-        <div class="slider" v-show="movieShow" >
-            <ul v-for="(item,i) in popularMovie" :key="i">
-            <nuxt-link :to="'/movie/'+popularMovieID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularMovie[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{popularMovie[i].title}}</a></li>
-            <li id="release-date">{{popularMovie[i].release_date}}</li>
+        <!-- <div class="slider" v-show="weekShow" >
+            <ul v-for="(item,i) in weekTrend" :key="i">
+            <nuxt-link :to="'/movie/'+weekTrendID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+weekTrend[i].poster_path" alt="poster"></li></nuxt-link>
+            <li id="popular-tv-name"><a href="#">{{weekTrend[i].name}}{{weekTrend[i].title}}</a></li>
+            <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li>
             </ul>
         </div>
-        <div class="slider" v-show="tvShow" >
-            <ul v-for="(item,i) in popularTvPrograms" :key="i">
-            <nuxt-link :to="'/tv/'+popularTvID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li>
-            <li id="release-date">{{popularTvPrograms[i].first_air_date}}</li>
+        <div class="slider" v-show="todayShow" >
+            <ul v-for="(item,i) in todayTrend" :key="i">
+            <nuxt-link :to="'/tv/'+todayTrendID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+todayTrend[i].poster_path" alt="poster"></li></nuxt-link>
+            <li id="popular-tv-name"><a href="#">{{todayTrend[i].name}}{{weekTrend[i].title}}</a></li>
+            <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li>
             </ul>
-        </div>
+        </div> -->
         </div>
     </div>
 </template>
@@ -34,38 +34,37 @@ export default {
 
     data() {
       return {
-        popularTvPrograms: [],
-        popularTvID : [],
-        popularMovie: [],
-        popularMovieID: [],
-        tvShow : false,
-        movieShow : true,
+        todayTrend: [],
+        todayTrendID : [],
+        weekTrend: [],
+        weekTrendID: [],
+        todayShow : true,
+        weekShow : false,
       }
     },
     async fetch() {
-      const tvData = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
-      // console.log(tvData.data)
-      this.popularTvPrograms = tvData.data.results
-      this.popularTvPrograms.map((item)=>{
-        this.popularTvID.push(item.id)
+      const todayTrendData = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=88c8e859d46625c472d014b2f3c995b0`)
+      this.todayTrend = todayTrendData.data.results
+      this.todayTrend.map((item)=>{
+        this.todayTrendID.push(item.id)
       })
 
-      const movieData = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
-      // console.log(movieData.data.results)
-      this.popularMovie = movieData.data.results
-        this.popularMovie.map((item)=>{
-        this.popularMovieID.push(item.id)
+      const weekTrendData = await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=88c8e859d46625c472d014b2f3c995b0`)
+      console.log(weekTrendData.data.results)
+      this.weekTrend = weekTrendData.data.results
+        this.weekTrend.map((item)=>{
+        this.weekTrendID.push(item.id)
       })
 
     },
     methods: {
-      clickMovie(){
-        this.tvShow = false
-        this.movieShow = true
+      clickToday(){
+        this.todayShow = true
+        this.weekShow = false
       },
-      clickTv(){
-        this.movieShow = false
-        this.tvShow = true
+      clickWeek(){
+        this.weekShow = true
+        this.todayShow = false
       }
     }
   }

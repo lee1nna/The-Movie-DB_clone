@@ -44,14 +44,14 @@ export default {
     },
     async fetch() {
       const FreetvData = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1&with_watch_monetization_types=free`)
-      console.log(FreetvData.data)
+      // console.log(FreetvData.data)
       this.FreetoWatchMovie = FreetvData.data.results
       this.FreetoWatchMovie.map((item)=>{
         this.FreetoWatchMovieID.push(item.id)
       })
 
       const FreemovieData = await axios.get(`https://api.themoviedb.org/3/discover/tv?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1&with_watch_monetization_types=free`)
-      console.log(FreemovieData.data.results)
+      // console.log(FreemovieData.data.results)
       this.FreetoWatchTv = FreemovieData.data.results
         this.FreetoWatchTv.map((item)=>{
         this.FreetoWatchTvID.push(item.id)

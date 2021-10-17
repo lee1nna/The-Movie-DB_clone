@@ -11,6 +11,7 @@
     <PopularArea/>
     <FreeToWatchArea/>
     <LatestTrailerArea/>
+    <!-- <TrendingArea/> -->
     <Footer/>
   </div>
 </template>
@@ -29,14 +30,23 @@ export default {
   }
 
   .main .main-text{
-    display: block;
-    position: absolute;
+    height: 10px;
+  }
+
+  .main .main-text h1{
     color: aliceblue;
-    text-align: left;
-    margin: auto;
-    top: 90px;
-    left: 80px;
-    z-index: 1;
+    font-weight: bold;
+    position: relative;
+    bottom: 280px;
+    right: 500px;
+  }
+
+  .main .main-text h2{
+    color: aliceblue;
+    font-weight: bold;
+    position: relative;
+    bottom: 280px;
+    right: 80px;
   }
 
   .main-img{
