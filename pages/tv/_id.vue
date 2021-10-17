@@ -1,14 +1,16 @@
 <template>
     <div>
         <Header/>
-        <div>인기있는 tv 상세페이지</div>
-        <div>
-            <img :src="'https://image.tmdb.org/t/p/w200'+popularTvInfo.poster_path">
+        <div id="detail-section">
+            <div class="left">
+                <img :src="'https://image.tmdb.org/t/p/w200'+tvInfo.poster_path">
+            </div>
+            <div class="right">
+                <h1>{{tvInfo.name}}</h1>
+                <h6>개요</h6>
+                <h2>{{tvInfo.overview}}</h2>
+            </div>
         </div>
-        <div>
-            {{popularTvInfo.overview}}
-        </div>
-        <div>{{popularTvInfo.name}}</div>
         <Footer/>
     </div>
 </template>
@@ -27,7 +29,7 @@ export default {
       .then((res)=>{
           console.log(res.data)
           return {
-              popularTvInfo: res.data
+              tvInfo: res.data
           }
       })
     }
