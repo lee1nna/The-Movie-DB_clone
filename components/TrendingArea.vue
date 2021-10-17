@@ -10,20 +10,20 @@
           </div>
         </div>
         <div class="slider-box">
-        <!-- <div class="slider" v-show="weekShow" >
+        <div class="slider" v-show="weekShow" >
             <ul v-for="(item,i) in weekTrend" :key="i">
-            <nuxt-link :to="'/movie/'+weekTrendID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+weekTrend[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{weekTrend[i].name}}{{weekTrend[i].title}}</a></li>
-            <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li>
+            <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+weekTrend[i].poster_path" alt="poster"></li>
+            <!-- <li id="popular-tv-name"><a href="#">{{weekTrend[i].name}}{{weekTrend[i].title}}</a></li> -->
+            <!-- <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li> -->
             </ul>
         </div>
         <div class="slider" v-show="todayShow" >
             <ul v-for="(item,i) in todayTrend" :key="i">
-            <nuxt-link :to="'/tv/'+todayTrendID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+todayTrend[i].poster_path" alt="poster"></li></nuxt-link>
-            <li id="popular-tv-name"><a href="#">{{todayTrend[i].name}}{{weekTrend[i].title}}</a></li>
-            <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li>
+            <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+todayTrend[i].poster_path" alt="poster"></li>
+            <!-- <li id="popular-tv-name"><a href="#">{{todayTrend[i].name}}{{weekTrend[i].title}}</a></li> -->
+            <!-- <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li> -->
             </ul>
-        </div> -->
+        </div>
         </div>
     </div>
 </template>

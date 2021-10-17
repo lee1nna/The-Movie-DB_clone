@@ -49,15 +49,13 @@ export default {
         width: 300px;
         height: 450px;
         left: 50px;
-        top: 50px; 
+        top: 100px; 
         float: left;
-        background: #ff0;
     }
 
     #detail-section .left img{
         width: 300px;
         height: 450px;
-        align-content: flex-end;
     }
 
     #detail-section .right{

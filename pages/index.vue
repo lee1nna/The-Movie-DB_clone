@@ -11,7 +11,7 @@
     <PopularArea/>
     <FreeToWatchArea/>
     <LatestTrailerArea/>
-    <!-- <TrendingArea/> -->
+    <TrendingArea/>
     <Footer/>
   </div>
 </template>

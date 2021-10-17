@@ -17,7 +17,6 @@
 				<ul>
 					<li><a href="#">+</a></li>
 					<li><a href="">KO</a></li>
-					<li><a href="">종</a></li>
 					<li><a href="">프로필</a></li>
           <li><a href="">검색</a></li>
 				</ul>
