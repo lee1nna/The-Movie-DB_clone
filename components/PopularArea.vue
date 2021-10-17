@@ -37,7 +37,6 @@ export default {
       this.popularTvPrograms.map((item)=>{
         this.popularTvID.push(item.id)
       })
-      
 
     console.log(this.popularTvID)
     },
