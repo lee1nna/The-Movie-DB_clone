@@ -4,13 +4,20 @@
           <h3>What's Popular</h3>
           <div id="category-selector">
             <ul>
-              <li><a href="#">영화</a></li>
-              <li><a href="">TV프로그램</a></li>
+              <li @click="clickMovie">영화</li>
+              <li @click="clickTv">TV프로그램</li>
             </ul>
           </div>
         </div>
         <div class="slider-box">
-        <div class="slider">
+        <div class="slider" v-show="movieShow" >
+            <ul v-for="(item,i) in popularMovie" :key="i">
+            <nuxt-link :to="'/movie/'+popularMovieID[i]"><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularMovie[i].poster_path" alt="poster"></li></nuxt-link>
+            <li id="popular-tv-name"><a href="#">{{popularMovie[i].title}}</a></li>
+            <li id="release-date">{{popularMovie[i].release_date}}</li>
+            </ul>
+        </div>
+        <div class="slider" v-show="tvShow" >
             <ul v-for="(item,i) in popularTvPrograms" :key="i">
             <nuxt-link :to="'/tv/'+popularTvID[i]" ><li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+popularTvPrograms[i].poster_path" alt="poster"></li></nuxt-link>
             <li id="popular-tv-name"><a href="#">{{popularTvPrograms[i].name}}</a></li>
@@ -29,17 +36,38 @@ export default {
       return {
         popularTvPrograms: [],
         popularTvID : [],
+        popularMovie: [],
+        popularMovieID: [],
+        tvShow : false,
+        movieShow : true,
       }
     },
     async fetch() {
-      const { data } = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
-      this.popularTvPrograms = data.results
+      const tvData = await axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
+      // console.log(tvData.data)
+      this.popularTvPrograms = tvData.data.results
       this.popularTvPrograms.map((item)=>{
         this.popularTvID.push(item.id)
       })
 
-    console.log(this.popularTvID)
+      const movieData = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US&page=1`)
+      console.log(movieData.data.results)
+      this.popularMovie = movieData.data.results
+        this.popularMovie.map((item)=>{
+        this.popularMovieID.push(item.id)
+      })
+
     },
+    methods: {
+      clickMovie(){
+        this.tvShow = false
+        this.movieShow = true
+      },
+      clickTv(){
+        this.movieShow = false
+        this.tvShow = true
+      }
+    }
   }
 </script>
 <style>
@@ -84,6 +112,7 @@ export default {
   }
 
   .content-header ul > li {
+    cursor: pointer;
     font-size: 15px bold;
     height: 100%;
     display: flex;
@@ -91,11 +120,7 @@ export default {
     margin: 0px 20px 0px 20px;
   }
 
-  .content-header ul > li :hover{
-    color: rgb(255, 145, 0);
-  }
-
-  .content-header ul > li a {
+  .content-header ul > li {
     text-decoration: none;
     color: rgb(0, 0, 0);
   }
