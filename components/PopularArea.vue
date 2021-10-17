@@ -1,7 +1,13 @@
 <template>
     <div>
-        <div class="main-title">
-            <h2>What's Popular</h2>
+      <div class="content-header">
+          <h3>What's Popular</h3>
+          <div id="category-selector">
+            <ul>
+              <li><a href="#">영화</a></li>
+              <li><a href="">TV프로그램</a></li>
+            </ul>
+          </div>
         </div>
         <div class="slider-box">
         <div class="slider">
@@ -44,12 +50,62 @@ export default {
     padding: 0;
   }
 
-  .main-title > h2{
+  ul{
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
+    outline: none;
+  }
+
+  .content-header{
+    width: 1300px;
+    height: 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .content-header h3{
     font-size: 24px;
     font-weight: 700;
-    margin: auto;
-    padding: 20px 0px 0px 10px;
-    max-width:1300px;
+    top: 20px;
+    margin: 0;
+  }
+
+  .content-header ul {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .content-header ul > li {
+    font-size: 15px bold;
+    height: 100%;
+    display: flex;
+    text-align: left;
+    margin: 0px 20px 0px 20px;
+  }
+
+  .content-header ul > li :hover{
+    color: rgb(255, 145, 0);
+  }
+
+  .content-header ul > li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+
+  .content-header > #category-selector{
+    position: relative;
+    right: 800px;
+    bottom: 13px;
+    height: 100%;
   }
 
   .slider ul{

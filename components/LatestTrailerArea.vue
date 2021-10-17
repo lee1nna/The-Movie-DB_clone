@@ -1,7 +1,13 @@
 <template>
     <div>
-        <div class="main-title">
-            <h2>최신 예고편</h2>
+      <div class="content-header">
+          <h3>최신 예고편</h3>
+          <div id="category-selector">
+            <ul>
+              <li><a href="#">영화</a></li>
+              <li><a href="">TV프로그램</a></li>
+            </ul>
+          </div>
         </div>
         <div class="movie-slider-box">
             <div class="movie-slider">

@@ -29,10 +29,11 @@ export default {
   }
 
   .main .main-text{
+    display: block;
     position: absolute;
     color: aliceblue;
     text-align: left;
-    margin:auto;
+    margin: auto;
     top: 90px;
     left: 80px;
     z-index: 1;

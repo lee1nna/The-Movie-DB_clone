@@ -1,7 +1,13 @@
 <template>
     <div>
-        <div class="main-title">
-            <h2>Free To Watch</h2>
+      <div class="content-header">
+          <h3>Free to Watch</h3>
+          <div id="category-selector">
+            <ul>
+              <li><a href="#">영화</a></li>
+              <li><a href="">TV프로그램</a></li>
+            </ul>
+          </div>
         </div>
         <div class="slider-box">
         <div class="slider">
