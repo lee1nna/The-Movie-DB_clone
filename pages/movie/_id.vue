@@ -9,6 +9,8 @@
                 <h1>{{movieInfo.title}}</h1>
                 <h6>개요</h6>
                 <h2>{{movieInfo.overview}}</h2>
+                <!-- <button>트레일러 재생</button> -->
+            
             </div>
         </div>
         <Footer/>
@@ -32,7 +34,9 @@ export default {
               movieInfo: res.data
           }
       })
-    }
+    },
+
+
 }
 </script>
 

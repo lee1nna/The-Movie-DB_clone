@@ -10,20 +10,20 @@
           </div>
         </div>
         <div class="slider-box">
-        <div class="slider" v-show="weekShow" >
-            <ul v-for="(item,i) in weekTrend" :key="i">
-            <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+weekTrend[i].poster_path" alt="poster"></li>
-            <!-- <li id="popular-tv-name"><a href="#">{{weekTrend[i].name}}{{weekTrend[i].title}}</a></li> -->
-            <!-- <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li> -->
-            </ul>
-        </div>
-        <div class="slider" v-show="todayShow" >
-            <ul v-for="(item,i) in todayTrend" :key="i">
-            <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+todayTrend[i].poster_path" alt="poster"></li>
-            <!-- <li id="popular-tv-name"><a href="#">{{todayTrend[i].name}}{{weekTrend[i].title}}</a></li> -->
-            <!-- <li id="release-date">{{weekTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li> -->
-            </ul>
-        </div>
+          <div class="slider" v-show="weekShow" >
+              <ul v-for="(item,i) in weekTrend" :key="i">
+              <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+weekTrend[i].poster_path" alt="poster"></li>
+              <li id="popular-tv-name"><a href="#">{{weekTrend[i].name}}{{weekTrend[i].title}}</a></li>
+              <li id="release-date">{{weekTrend[i].release_date}}{{weekTrend[i].first_air_date}}</li>
+              </ul>
+          </div>
+          <div class="slider" v-show="todayShow" >
+              <ul v-for="(item,i) in todayTrend" :key="i">
+              <li><img id="poster" :src="'https://image.tmdb.org/t/p/w200'+todayTrend[i].poster_path" alt="poster"></li>
+              <li id="popular-tv-name"><a href="#">{{todayTrend[i].name}}{{todayTrend[i].title}}</a></li>
+              <li id="release-date">{{todayTrend[i].release_date}}{{todayTrend[i].first_air_date}}</li>
+              </ul>
+          </div>
         </div>
     </div>
 </template>
@@ -40,8 +40,11 @@ export default {
         weekTrendID: [],
         todayShow : true,
         weekShow : false,
+        tvNameShow : false,
+        movieTitleShow : false
       }
     },
+
     async fetch() {
       const todayTrendData = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=88c8e859d46625c472d014b2f3c995b0`)
       this.todayTrend = todayTrendData.data.results
@@ -57,6 +60,7 @@ export default {
       })
 
     },
+
     methods: {
       clickToday(){
         this.todayShow = true
