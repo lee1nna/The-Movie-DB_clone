@@ -53,7 +53,7 @@ export default {
       })
 
       const weekTrendData = await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=88c8e859d46625c472d014b2f3c995b0`)
-      console.log(weekTrendData.data.results)
+      // console.log(weekTrendData.data.results)
       this.weekTrend = weekTrendData.data.results
         this.weekTrend.map((item)=>{
         this.weekTrendID.push(item.id)

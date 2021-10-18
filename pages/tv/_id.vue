@@ -27,7 +27,7 @@ export default {
     asyncData ({params}) {
       return axios.get(`https://api.themoviedb.org/3/tv/${params.id}?api_key=88c8e859d46625c472d014b2f3c995b0&language=en-US`)
       .then((res)=>{
-          console.log(res.data)
+        //   console.log(res.data)
           return {
               tvInfo: res.data
           }

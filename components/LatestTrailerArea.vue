@@ -60,8 +60,8 @@ export default {
       movieData.map((item)=>{
           this.videoKey.push(item.data.results[0].key)
       })
-        console.log(this.videoKey)
-        console.log(this.moviePosterPath)
+        // console.log(this.videoKey)
+        // console.log(this.moviePosterPath)
     },
 
     methods: {
